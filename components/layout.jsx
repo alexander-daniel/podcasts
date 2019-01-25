@@ -1,8 +1,13 @@
+import Head from 'next/head'
 import Header from './search-header';
 
 export default (props) => {
   return (
-    <div style={{ width: '800px', fontFamily: 'sans-serif', fontWeight: 100 }}>
+    <div style={{ maxWidth: '800px', fontFamily: 'sans-serif', fontWeight: 100 }}>
+      <Head>
+        <title>pod</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
       <Header />
       { props.children }
       <br/>
