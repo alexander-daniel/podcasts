@@ -1,0 +1,11 @@
+{
+  "name": "pod",
+  "version": 2,
+  "alias": "pod.now.sh",
+  "builds": [
+    { "src": "next.config.js", "use": "@now/next" }
+  ],
+  "routes": [
+    { "src": "/", "dest": "/search" }
+  ]
+}

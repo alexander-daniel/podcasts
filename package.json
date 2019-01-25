@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "isomorphic-fetch": "^2.2.1",
+    "next": "^7.0.2",
+    "query-string": "^6.2.0",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0",
+    "rss-parser": "^3.6.2"
+  },
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  }
+}
