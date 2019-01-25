@@ -9,7 +9,7 @@ export default (props) => {
       <br/>
       <div>thanks to <a href="https://gpodder.net" target="_blank">@gpodder</a> for the metadata</div>
       <div>mit license | <a href="https://git.sr.ht/~alexanderdaniel/pod" target="_blank">git src</a></div>
-      <div>{'2019 alex@cedarcedar.com'}</div>
+      <div>{'2019 cedarcedar'}</div>
     </div>
   );
 };
