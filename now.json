@@ -1,7 +1,9 @@
 {
   "name": "pod",
   "version": 2,
-  "alias": "pod.now.sh",
+  "alias": [
+    "pod.now.sh", "pod.cedarcedar.com"
+  ],
   "builds": [
     { "src": "next.config.js", "use": "@now/next" }
   ],
