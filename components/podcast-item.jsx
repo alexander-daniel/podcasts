@@ -7,11 +7,8 @@ export default (props) => {
 
   return (
     <div style={{ borderBottom: '1px solid black' }}>
-      <p>
-        <strong>{title}</strong>
-        {' - '}
-        <a href={`/episodes?podcast_url=${url}`}>{'latest episodes'}</a>
-      </p>
+      <h2>{title}</h2>
+      <a href={`/episodes?podcast_url=${url}`}>{'Latest Episodes'}</a>
       <p>{description}</p>
     </div>
   );

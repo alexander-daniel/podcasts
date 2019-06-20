@@ -12,12 +12,15 @@ class PodcastList extends React.Component {
       const url = `https://gpodder.net/search.json?q=${searchTerm}`;
       const res = await fetch(url);
       const json = await res.json();
-      return { podcasts: json };
+      return { podcasts: json.sort((a, b) => b.subscribers - a.subscribers) };
     }
 
-    return {
-      podcasts: []
-    };
+    else {
+      const url = `https://gpodder.net/toplist.json`;
+      const res = await fetch(url);
+      const json = await res.json();
+      return { podcasts: json.sort((a, b) => b.subscribers - a.subscribers) };
+    }
   }
 
   render() {

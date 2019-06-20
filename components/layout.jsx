@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Header from './search-header';
+import '../style.css';
 
 export default (props) => {
   return (
