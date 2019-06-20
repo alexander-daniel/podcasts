@@ -10,10 +10,7 @@ class EpisodeList extends React.Component {
   static async getInitialProps({ query }) {
     const podcastURL = query.podcast_url;
     if (podcastURL) {
-      const res = await fetch(`https://gpodder.net/api/2/data/podcast.json?url=${podcastURL}`);
-      const json = await res.json();
-      const { url } = json;
-      let feed = await parser.parseURL(url);
+      let feed = await parser.parseURL(podcastURL);
       return { episodes: feed.items };
     }
 
