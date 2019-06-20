@@ -6,22 +6,26 @@ const Parser = require('rss-parser');
 const parser = new Parser();
 require('isomorphic-fetch');
 
-class EpisodeList extends React.Component {
+class PodcastPage extends React.Component {
   static async getInitialProps({ query }) {
-    const podcastURL = query.podcast_url;
+    const podcastURL = query.url;
     if (podcastURL) {
       let feed = await parser.parseURL(podcastURL);
-      return { episodes: feed.items };
+      return {
+        episodes: feed.items,
+        title: feed.title
+      };
     }
 
-    return { episodes: [] }
+    return { episodes: [], title: '' }
   }
 
   render() {
-    const { episodes } = this.props;
+    const { episodes, title } = this.props;
 
     return (
       <Layout>
+        <h1>{title}</h1>
         {
           episodes.length ?
           episodes.slice(0, 10).map((episode, i) => <EpisodeItem key={i} episode={episode}/>) :
@@ -32,4 +36,4 @@ class EpisodeList extends React.Component {
   }
 }
 
-export default withRouter(EpisodeList);
+export default withRouter(PodcastPage);

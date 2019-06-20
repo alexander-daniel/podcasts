@@ -6,48 +6,28 @@ require('isomorphic-fetch');
 
 const FAVES = [
   {
+    title: 'Front Burner',
+    description: `Front Burner is your essential daily news podcast, brought to you by CBC News & CBC Podcasts. Every weekday, award-winning investigative journalist Jayme Poisson takes you deep into the stories shaping Canada and the world. Through Jayme’s own reporting and conversations with others in the know, Front Burner will leave you feeling smarter, more connected and eager to share what you've learned.`,
+    url: 'https://www.cbc.ca/podcasting/includes/frontburner.xml'
+  },
+  {
     title: 'Effectively Wild',
-    description: '',
+    description: 'Baseball statistical analysis and commentary, with Ben, Sam and Meg.',
     url: 'http://www.baseballprospectus.com/blog/daily_podcast/feed.xml'
   },
   {
     title: 'At the Letters',
-    description: '',
+    description: 'Sportsnet Blue Jays weekly podcast with Arden and Ben',
     url: 'http://feeds.feedburner.com/SN/AtTheLetters'
-  },
-  {
-    title: 'Frontburner',
-    description: '',
-    url: 'https://www.cbc.ca/podcasting/includes/frontburner.xml'
-  },
-  {
-    title: 'Chopcast',
-    description: '',
-    url: 'https://feeds.soundcloud.com/users/soundcloud:users:76760907/sounds.rss'
-  },
-  {
-    title: 'Radiolab',
-    description: '',
-    url: 'http://feeds.wnyc.org/radiolab'
   }
 ];
 
-class PodcastList extends React.Component {
+class FavouritesPage extends React.Component {
 
-  static async getInitialProps({ query }) {
-    const searchTerm = query.q;
-
-    if (!searchTerm) {
-      return {
-        podcasts: FAVES
-      }
+  static async getInitialProps() {
+    return {
+      podcasts: FAVES
     }
-
-    const url = `https://gpodder.net/search.json?q=${searchTerm}`;
-
-    const res = await fetch(url);
-    const json = await res.json();
-    return { podcasts: json.sort((a, b) => b.subscribers - a.subscribers) };
   }
 
   render() {
@@ -65,4 +45,4 @@ class PodcastList extends React.Component {
   }
 }
 
-export default withRouter(PodcastList);
+export default withRouter(FavouritesPage);

@@ -16,7 +16,7 @@ export default (props) => {
   return (
     <>
       <h2>{title}</h2>
-      <date>{date.toDateString()}</date>
+      <small>{date.toDateString()}</small>
       <p>{contentSnippet}</p>
       <audio preload="none" controls src={enclosure.url || url } style={{ width: '100%' }} />
     </>
