@@ -1,15 +1,13 @@
-export default (props) => {
-  const {
-    title,
-    description,
-    url
-  } = props.podcast;
+const PodcastItem = (props) => {
+  const { title, description, url } = props.podcast;
 
   return (
     <>
       <h2>{title}</h2>
-      <a href={`/podcast?url=${url}`}>{'Latest Episodes'}</a>
+      <a href={`/podcast?url=${url}`}>{"Latest Episodes"}</a>
       <p>{description}</p>
     </>
   );
 };
+
+export default PodcastItem;
