@@ -1,8 +1,8 @@
 export default (props) => {
   const {
     title,
+    description,
     pubDate,
-    contentSnippet,
     url,
     enclosure,
   } = props.episode;
@@ -17,7 +17,7 @@ export default (props) => {
     <>
       <h2>{title}</h2>
       <small>{date.toDateString()}</small>
-      <p>{contentSnippet}</p>
+      <p>{description}</p>
       <audio preload="none" controls src={enclosure.url || url } style={{ width: '100%' }} />
     </>
   );
