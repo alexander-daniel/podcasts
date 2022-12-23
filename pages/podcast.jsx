@@ -8,7 +8,6 @@ const PodcastPage = ({ episodes, title }) => {
       <h1>{title}</h1>
       {episodes.length ? (
         episodes
-          .slice(0, 10)
           .map((episode, i) => <EpisodeItem key={i} episode={episode} />)
       ) : (
         <div>{"No Episodes"}</div>
@@ -35,7 +34,7 @@ PodcastPage.getInitialProps = async ({ query }) => {
       }
     });
     return {
-      episodes: feed.entries,
+      episodes: feed.entries.slice(0, 10),
       title: feed.title,
     };
   }
