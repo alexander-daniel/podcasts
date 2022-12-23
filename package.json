@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@extractus/feed-extractor": "^6.1.7",
     "next": "^11.1.2",
     "query-string": "^7.0.1",
     "react": "^17.0.2",
