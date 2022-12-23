@@ -1,7 +1,6 @@
 import React from "react";
 import EpisodeItem from "../components/episode-item";
-import Parser from "rss-parser";
-const parser = new Parser();
+import { read } from '@extractus/feed-extractor'
 
 const PodcastPage = ({ episodes, title }) => {
   return (
@@ -9,7 +8,6 @@ const PodcastPage = ({ episodes, title }) => {
       <h1>{title}</h1>
       {episodes.length ? (
         episodes
-          .slice(0, 10)
           .map((episode, i) => <EpisodeItem key={i} episode={episode} />)
       ) : (
         <div>{"No Episodes"}</div>
@@ -21,9 +19,22 @@ const PodcastPage = ({ episodes, title }) => {
 PodcastPage.getInitialProps = async ({ query }) => {
   const podcastURL = query.url;
   if (podcastURL) {
-    let feed = await parser.parseURL(podcastURL);
+    let feed = await read(podcastURL, {
+      getExtraEntryFields: (feedEntry) => {
+        const { enclosure, pubDate } = feedEntry;
+        return {
+          pubDate, 
+          enclosure: {
+            url: enclosure['@_url'],
+            type: enclosure['@_type'],
+            length: enclosure['@_length']
+          },
+          url: enclosure['@_url']
+        }
+      }
+    });
     return {
-      episodes: feed.items,
+      episodes: feed.entries.slice(0, 10),
       title: feed.title,
     };
   }
